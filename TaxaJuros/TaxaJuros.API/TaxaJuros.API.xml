@@ -4,5 +4,13 @@
         <name>TaxaJuros.API</name>
     </assembly>
     <members>
+        <member name="M:TaxaJuros.API.Controllers.TaxaJurosController.Get">
+            <summary>
+            Obter a taxa de Juros
+            </summary>
+            <returns>Valor da Taxa de Juros</returns>
+            <response code="200">Retorna o valor da Taxa de Juros</response>
+            <response code="500">Se der algum problema na requisição.</response>   
+        </member>
     </members>
 </doc>

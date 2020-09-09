@@ -8,6 +8,9 @@ using Microsoft.OpenApi.Models;
 using System.Globalization;
 using TaxaJuros.Core.Juros.Models;
 using TaxaJuros.Core.Juros.Interfaces;
+using System.Reflection;
+using System.IO;
+using System;
 
 namespace TaxaJuros.API
 {
@@ -23,6 +26,7 @@ namespace TaxaJuros.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddControllers();
             services.AddScoped<IJuros, Juros>();
             services.AddSwaggerGen(_ =>
@@ -32,21 +36,40 @@ namespace TaxaJuros.API
                     new OpenApiInfo
                     {
                         Title = "Taxa Juros",
-                        Version = "v1"
+                        Description = "API para disponibilizar a Taxa de Juros",
+                        Version = "v1",
+                        Contact = new OpenApiContact
+                        {
+                            Name = "Lucas Soares",
+                            Email = "Lucas_ssoares@live.com",
+                            Url = new Uri("https://www.linkedin.com/in/lucassoares1/"),
+                        }
                     });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                _.IncludeXmlComments(xmlPath);
             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            var supportedCultures = new[] { new CultureInfo("pt-BR") };
+            var cultureInfo = new CultureInfo("pt-BR");
+            var supportedCultures = new[] { cultureInfo };
             app.UseRequestLocalization(new RequestLocalizationOptions
             {
-                DefaultRequestCulture = new RequestCulture(culture: "pt-BR", uiCulture: "pt-BR"),
+                DefaultRequestCulture = new RequestCulture(cultureInfo),
                 SupportedCultures = supportedCultures,
-                SupportedUICultures = supportedCultures
+                SupportedUICultures = supportedCultures,
+                FallBackToParentCultures = false,
+                FallBackToParentUICultures = false,
+                RequestCultureProviders = null
             });
+
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
             if(env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -54,6 +77,13 @@ namespace TaxaJuros.API
 
             app.UseSwagger();
             app.UseSwaggerUI(_ => { _.SwaggerEndpoint("/swagger/v1/swagger.json", "Taxa Juros"); });
+
+            app.UseCors(_ =>
+            {
+                _.AllowAnyOrigin();
+                _.AllowAnyHeader();
+                _.AllowAnyMethod();
+            });
 
             app.UseHttpsRedirection();
 
