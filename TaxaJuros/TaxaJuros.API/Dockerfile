@@ -3,11 +3,11 @@
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["TaxaJuros.API/TaxaJuros.API.csproj", "TaxaJuros.API/"]
+COPY ["TaxaJuros.Core/TaxaJuros.Core.csproj", "TaxaJuros.Core/"]
 RUN dotnet restore "TaxaJuros.API/TaxaJuros.API.csproj"
 COPY . .
 WORKDIR "/src/TaxaJuros.API"
