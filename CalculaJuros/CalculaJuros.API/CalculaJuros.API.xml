@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CalculaJuros.API</name>
+    </assembly>
+    <members>
+        <member name="M:CalculaJuros.API.Controllers.CalculaJurosController.GetAsync(System.Decimal,System.Int32)">
+            <summary>
+            Obter o calculo de de juros compostos.
+            Valor Final = Valor Inicial * (1 + juros) ^ Tempo
+            </summary>
+            <param name="valorInicial">Valor inicial é um decimal.</param>
+            <param name="tempo">Tempo é um inteiro, que representa meses.</param>
+            <returns>Valor do calculo de Juros composto</returns>
+            <response code="200">Retorna o valor da Taxa de Juros</response>
+            <response code="400">Se houver problemas de validação de dados.</response>   
+        </member>
+        <member name="M:CalculaJuros.API.Controllers.ShowMeTheCodeController.Get">
+            <summary>
+            Obter a url onde encontra-se o fonte no github.
+            </summary>
+        </member>
+    </members>
+</doc>
