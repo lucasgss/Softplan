@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  taxajuros.api:
+    image: ${DOCKER_REGISTRY-}taxajurosapi
+    build:
+      context: .
+      dockerfile: TaxaJuros.API/Dockerfile
+    container_name: taxajuros_api
+    ports:
+      - 5501:80
