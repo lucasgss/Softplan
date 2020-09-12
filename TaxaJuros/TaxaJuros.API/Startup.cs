@@ -1,16 +1,14 @@
+using System;
+using System.IO;
+using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using System.Globalization;
-using TaxaJuros.Core.Juros.Models;
 using TaxaJuros.Core.Juros.Interfaces;
-using System.Reflection;
-using System.IO;
-using System;
+using TaxaJuros.Core.Juros.Models;
 
 namespace TaxaJuros.API
 {
@@ -26,7 +24,6 @@ namespace TaxaJuros.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
             services.AddControllers();
             services.AddScoped<IJuros, Juros>();
             services.AddSwaggerGen(_ =>
@@ -55,21 +52,6 @@ namespace TaxaJuros.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            var cultureInfo = new CultureInfo("pt-BR");
-            var supportedCultures = new[] { cultureInfo };
-            app.UseRequestLocalization(new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture(cultureInfo),
-                SupportedCultures = supportedCultures,
-                SupportedUICultures = supportedCultures,
-                FallBackToParentCultures = false,
-                FallBackToParentUICultures = false,
-                RequestCultureProviders = null
-            });
-
-            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
-            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
-
             if(env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -77,15 +59,6 @@ namespace TaxaJuros.API
 
             app.UseSwagger();
             app.UseSwaggerUI(_ => { _.SwaggerEndpoint("/swagger/v1/swagger.json", "Taxa Juros"); });
-
-            app.UseCors(_ =>
-            {
-                _.AllowAnyOrigin();
-                _.AllowAnyHeader();
-                _.AllowAnyMethod();
-            });
-
-            app.UseHttpsRedirection();
 
             app.UseRouting();
 
