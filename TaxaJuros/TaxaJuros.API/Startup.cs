@@ -59,7 +59,7 @@ namespace TaxaJuros.API
 
             app.UseSwagger();
             app.UseSwaggerUI(_ => { _.SwaggerEndpoint("/swagger/v1/swagger.json", "Taxa Juros"); });
-
+            
             app.UseRouting();
 
             app.UseAuthorization();
@@ -67,6 +67,10 @@ namespace TaxaJuros.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.Run(async context => {
+                context.Response.Redirect("swagger/index.html");
             });
         }
     }

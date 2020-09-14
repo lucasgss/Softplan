@@ -73,6 +73,10 @@ namespace CalculaJuros.API
             {
                 endpoints.MapControllers();
             });
+
+            app.Run(async context => {
+                context.Response.Redirect("swagger/index.html");
+            });
         }
     }
 }
