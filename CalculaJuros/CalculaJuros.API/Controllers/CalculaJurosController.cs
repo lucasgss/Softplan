@@ -38,6 +38,7 @@ namespace CalculaJuros.API.Controllers
             try
             {
                 var result = await _calculaJurosService.Calcular(valorInicial, tempo);
+                
                 return Ok(result);
             }
             catch(Exception ex)
