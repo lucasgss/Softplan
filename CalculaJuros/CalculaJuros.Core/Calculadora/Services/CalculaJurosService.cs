@@ -21,13 +21,13 @@ namespace CalculaJuros.Core.Calculadora.Services
             {
                 juros = await _taxaJurosService.GetTaxaJuros();
             }
-            catch(Exception ex)
+            catch
             {
-                throw new Exception("Não foi possíuvel estabelecer conexão com o serviço TaxaJuros.");
+                throw new Exception("Não foi possível estabelecer conexão com o serviço TaxaJuros.");
             }
             var calculadora = new CalcularJuros(valorInicial, juros, tempo);
             if(!calculadora.IsValid())
-                throw new Exception("Não foi possivel calcular a taxa de Juros, os valores devem ser maiores que zero.");
+                throw new ArgumentException("Não foi possivel realizar o calculo de Juros, os valores devem ser maiores que zero.");
             return calculadora.Calcular();
         }
     }

@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculaJuros.API", "Calcula
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{D32847AF-07F4-45EC-A0EB-667B8BD3923B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculaJuros.API.UnitTests", "CalculaJuros.API.UnitTests\CalculaJuros.API.UnitTests.csproj", "{2EDB4CA3-DE3B-4425-AE69-60F55BACC906}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculaJuros.API.UnitTests", "CalculaJuros.API.UnitTests\CalculaJuros.API.UnitTests.csproj", "{2EDB4CA3-DE3B-4425-AE69-60F55BACC906}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculaJuros.API.IntegrationTests", "CalculaJuros.API.IntegrationTests\CalculaJuros.API.IntegrationTests.csproj", "{ED668D14-98BA-4FA7-9115-918602719296}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,18 @@ Global
 		{2EDB4CA3-DE3B-4425-AE69-60F55BACC906}.Release|x64.Build.0 = Release|Any CPU
 		{2EDB4CA3-DE3B-4425-AE69-60F55BACC906}.Release|x86.ActiveCfg = Release|Any CPU
 		{2EDB4CA3-DE3B-4425-AE69-60F55BACC906}.Release|x86.Build.0 = Release|Any CPU
+		{ED668D14-98BA-4FA7-9115-918602719296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED668D14-98BA-4FA7-9115-918602719296}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED668D14-98BA-4FA7-9115-918602719296}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{ED668D14-98BA-4FA7-9115-918602719296}.Debug|x64.Build.0 = Debug|Any CPU
+		{ED668D14-98BA-4FA7-9115-918602719296}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{ED668D14-98BA-4FA7-9115-918602719296}.Debug|x86.Build.0 = Debug|Any CPU
+		{ED668D14-98BA-4FA7-9115-918602719296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED668D14-98BA-4FA7-9115-918602719296}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED668D14-98BA-4FA7-9115-918602719296}.Release|x64.ActiveCfg = Release|Any CPU
+		{ED668D14-98BA-4FA7-9115-918602719296}.Release|x64.Build.0 = Release|Any CPU
+		{ED668D14-98BA-4FA7-9115-918602719296}.Release|x86.ActiveCfg = Release|Any CPU
+		{ED668D14-98BA-4FA7-9115-918602719296}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +110,7 @@ Global
 		{5AB54B71-91A8-465D-A807-2E5C06E0DB3B} = {E6867448-520F-4B40-98C3-6C171C247E41}
 		{1EA24B39-6E39-45CA-8036-8FE05464F0D0} = {DD36D3B3-BD54-4D27-B15A-90742027291A}
 		{2EDB4CA3-DE3B-4425-AE69-60F55BACC906} = {E6867448-520F-4B40-98C3-6C171C247E41}
+		{ED668D14-98BA-4FA7-9115-918602719296} = {E6867448-520F-4B40-98C3-6C171C247E41}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {359B5DD4-C109-4A4E-932B-2EDE5DBC56AF}

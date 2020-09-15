@@ -39,5 +39,6 @@ namespace CalculaJuros.API.UnitTests.Controllers
             var resultadoCalculo = Assert.IsType<decimal>(objResult.Value);
             Assert.Equal(RetornoEsperadoDoServico, resultadoCalculo);
         }
+
     }
 }
